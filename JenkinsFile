@@ -1,0 +1,28 @@
+pipeline {
+	tools {
+		maven 'M3'
+	}
+	stages {
+		stage ('Checkout') {
+			steps {
+				git 'https://github.com/Super-Sujay/LearnJenkins.git'
+			}
+		}
+		stage ('Build') {
+			steps {
+				bat 'mvn clean compile'
+			}
+		}
+		stage ('Test') {
+			steps {
+				bat 'mvn test'
+				junit '**/target/surefire-reports/TEST-*.xml'
+			}
+		}
+		stage ('Package') {
+			steps {
+				bat 'mvn package'
+			}
+		}
+	}
+}
