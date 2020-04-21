@@ -1,6 +1,9 @@
 pipeline {
 	agent { label 'master' }
-	tools { Maven 'M3' }
+	tools {
+		maven 'Maven 3.6.2'
+		jdk 'Java 8'
+	}
 	stages {
 		stage ('Checkout') {
 			steps {
