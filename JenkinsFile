@@ -1,5 +1,5 @@
 pipeline {
-	agent { label 'Test Slave Node' }
+	agent { label 'x64' }
 	tools {
 		maven 'Maven 3.6.2'
 		jdk 'Java 8'
