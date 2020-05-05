@@ -26,5 +26,16 @@ pipeline {
 				bat 'mvn package'
 			}
 		}
+		stage ('Archive') {
+			steps {
+				archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+			}
+		}
+		stage ('Deploy') {
+			steps {
+				input 'Do you approve the deployment?'
+				echo Deploying...
+			}
+		}
 	}
 }
